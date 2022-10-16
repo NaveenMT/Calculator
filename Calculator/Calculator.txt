@@ -1,0 +1,6 @@
+interface Calculator {
+	float addition(float a ,float b);
+	float substraction(float a,float b);
+	float multiplication(float a,float b);
+	float divition(float a,float b);
+}

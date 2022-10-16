@@ -1,0 +1,5 @@
+public class AbstractClass extends Operations{
+	public float substraction(float a,float b) {
+		return a-b;
+	}
+}

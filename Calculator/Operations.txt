@@ -1,0 +1,23 @@
+public abstract class Operations implements Calculator {      //interface
+	
+	public float addition(float a,float b) {
+		return a+b;
+	}
+	
+	public float multiplication(float a,float b) {
+		return a*b;
+	}
+	
+	public float divition(float a,float b) {
+		try {
+			float f=a/b;
+			return f;
+		}
+		catch(Exception e) {
+			System.out.println("Can't divide by zero");
+			System.exit(0);
+		}
+		return 0;
+	}
+	
+}

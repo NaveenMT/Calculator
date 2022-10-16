@@ -1,0 +1,10 @@
+public class Operations1 extends AbstractClass {	 //Abstract class
+	
+	public float addition(float a,float b) {     //overriding
+		return a+b;
+	}
+	
+	public float addition(int a,int b) {		 //overloading
+		return a+b;
+	}
+}

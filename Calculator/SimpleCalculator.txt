@@ -1,0 +1,132 @@
+import java.util.Arrays;
+import java.util.Scanner;
+import java.util.StringTokenizer;
+
+
+public class SimpleCalculator {
+	static SimpleCalculator simple=new SimpleCalculator();
+	
+	float a;
+	float b;
+	String str;
+	String arr[]=new String[26];
+	int index=0;
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		simple.splitValues();
+		simple.methodCalling();
+		simple.result();
+	}
+	
+	
+
+	private SimpleCalculator(){
+		System.out.println("The calculator only performs the operations like \nAddition\nSubstraction\nMultiplication\nDivition");
+		Scanner scanner=new Scanner(System.in);
+		str=scanner.nextLine();
+		scanner.close();
+	}
+	
+	private void splitValues() {
+		String op="+-*/";
+		StringTokenizer token=new StringTokenizer(str,op,true);
+		
+		while(token.hasMoreTokens()) {
+			arr[index++]=token.nextToken();
+			if (index==23) {
+				System.out.println("The limit is exceeded\nThe taken sequence is :\n");
+			//	System.out.println(Arrays.toString(arr));
+				for(int i=0;i<index;i++) {
+					System.out.print(arr[i]);
+				}
+				System.out.println();
+				break;
+			}
+		}
+	}
+	
+	private void methodCalling() {
+		try {
+		
+			for(int i=1;i<index;i+=2) {
+				if(arr[i].equals("/")) {
+					a=Float.parseFloat(arr[i-1]);
+					b=Float.parseFloat(arr[i+1]);
+					Operations1 classes=new Operations1();					
+					float ans=classes.divition(a, b);
+					arr[i-1]=ans+"";
+					for(int j=i;j<index;j++) {
+						arr[j]=arr[j+2];
+						arr[j+1]=arr[j+3];
+					}
+					index-=2;
+					i-=2;
+				}
+			}
+			
+			
+			for(int i=1;i<index;i+=2) {
+				if(arr[i].equals("*")) {
+					a=Float.parseFloat(arr[i-1]);
+					b=Float.parseFloat(arr[i+1]);
+					Operations1 classes=new Operations1();
+					float ans=classes.multiplication(a, b);
+					arr[i-1]=ans+"";
+					for(int j=i;j<index;j++) {
+						arr[j]=arr[j+2];
+						arr[j+1]=arr[j+3];
+					}
+					index-=2;
+					i-=2;
+				}
+			}
+			
+			for(int i=1;i<index;i+=2) {
+				if(arr[i].equals("+")) {
+					a=Float.parseFloat(arr[i-1]);
+					b=Float.parseFloat(arr[i+1]);
+					Operations1 classes=new Operations1();
+					float ans=classes.addition(a, b);
+					arr[i-1]=ans+"";
+					for(int j=i;j<index;j++) {
+						arr[j]=arr[j+2];
+						arr[j+1]=arr[j+3];
+					}
+					index-=2;
+					i-=2;
+					
+				}
+			}
+
+			for(int i=1;i<index;i+=2) {
+				if(arr[i].equals("-")) {
+					a=Float.parseFloat(arr[i-1]);
+					b=Float.parseFloat(arr[i+1]);
+					Operations1 classes=new Operations1();
+					float ans=classes.substraction(a, b);
+					arr[i-1]=ans+"";
+					for(int j=i;j<index;j++) {
+						arr[j]=arr[j+2];
+						arr[j+1]=arr[j+3];
+					}
+					index-=2;
+					i-=2;
+					
+				}
+			}
+		}
+		catch(Exception e) {
+			System.out.println("Syntax Error");
+			System.exit(0);
+		}
+	}
+	
+	private void result() {
+		
+		arr[index-1]=(arr[index-1].endsWith(".0"))?arr[index-1].substring(0,arr[index-1].indexOf('.'))+"":arr[index-1];
+		System.out.println(arr[index-1]);
+	}
+	
+
+}
