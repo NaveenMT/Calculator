@@ -20,7 +20,7 @@ all oops concepts included
 4. it performs the operation based on BODMAS rules
 5.  if the output part ends with .0 then it returns a whole values else it returns float values
         for example,
-            1.  12.0
+            1)  12.0
                   -->12
-            2.  12.0012
+            2)  12.0012
                   -->12.0012
